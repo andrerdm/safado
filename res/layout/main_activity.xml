@@ -6,16 +6,29 @@
 
     <TextView
         style="@style/AppTheme"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/data_nascimento" />
-
-    <Button
-        android:id="@+id/btnSelecionarData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:onClick="selecionarData"/>
+        android:text="@string/titulo"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/campoDia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10" android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/campoMes"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10" android:inputType="number"/>
+
+    <EditText
+        android:id="@+id/campoAno"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10" android:inputType="number"/>
     
     <Button
         android:id="@+id/btnCalcularData"
@@ -23,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:onClick="calcularData"
-        android:text="@string/calcular"/>
+        android:text="@string/calcular"
+        android:textSize="25sp" />
     
 </LinearLayout>
