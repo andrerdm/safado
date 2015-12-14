@@ -1,7 +1,10 @@
 <resources>
 
     <string name="app_name">Safadometro</string>
-    <string name="titulo">SAFADÔMETRO</string>
+    <string name="titulo">#SAFADÔMETRO</string>
     <string name="calcular">Calcular</string>
+    <string name="dia">Dia</string>
+    <string name="mes">Mês</string>
+    <string name="ano">Ano</string>
     
 </resources>

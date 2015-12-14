@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -17,7 +18,10 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		//romeve a barra de thema
+		this.requestWindowFeature(Window.FEATURE_NO_TITLE);
 		setContentView(R.layout.main_activity);
+		
 		campoDia = (EditText) findViewById(R.id.campoDia);
 		campoMes = (EditText) findViewById(R.id.campoMes);
 		campoAno = (EditText) findViewById(R.id.campoAno);
@@ -40,9 +44,14 @@ public class MainActivity extends Activity {
 	 * @param ano
 	 */
 	private void calcularPorcentagem(int dia, int mes, int ano){
-		int safadeza, anjo;
+		int somatorio;
+		double safadeza, anjo, conta2;
+		float conta1;
 		
-		safadeza = this.somatorio(mes) + (ano / 100) * (50 - dia);
+		somatorio = this.somatorio(mes);
+		conta1 = (5 / 100);
+		conta2 = (50 - dia);
+		safadeza = somatorio + conta1 * conta2;
 		anjo = 100 - safadeza;
 		
 		this.anjo.setText(anjo +" % Anjo");

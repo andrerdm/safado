@@ -2,53 +2,110 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:background="@drawable/fundo"
+    android:orientation="vertical"
+    android:padding="25dp" 
+    >
 
     <TextView
-        style="@style/AppTheme"
+        android:id="@+id/titulo"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
         android:text="@string/titulo"
-        android:textSize="25sp"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp"
         android:textStyle="bold" />
 
-    <EditText
-        android:id="@+id/campoDia"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:ems="10" android:inputType="number"/>
+        android:paddingTop="30dp" >
 
-    <EditText
-        android:id="@+id/campoMes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10" android:inputType="number"/>
+        <EditText
+            android:id="@+id/campoDia"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:ems="10"
+            android:hint="@string/dia"
+            android:inputType="number"
+            android:maxLength="2"
+            android:padding="10dp"
+            android:textColor="#000000"
+            android:textSize="20sp" >
 
-    <EditText
-        android:id="@+id/campoAno"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10" android:inputType="number"/>
+            <requestFocus />
+        </EditText>
+
+        <EditText
+            android:id="@+id/campoMes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:ems="10"
+            android:hint="@string/mes"
+            android:inputType="number"
+            android:maxLength="2"
+            android:padding="10dp"
+            android:textColor="#000000" />
+
+        <EditText
+            android:id="@+id/campoAno"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp"
+            android:layout_weight="1"
+            android:background="#ffffff"
+            android:ems="10"
+            android:hint="@string/ano"
+            android:inputType="number"
+            android:maxLength="2"
+            android:padding="10dp"
+            android:textColor="#000000" />
+
+    </LinearLayout>
     
     <Button
         android:id="@+id/btnCalcularData"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_marginTop="20dp"
+        android:background="#6666FF"
         android:onClick="calcularData"
         android:text="@string/calcular"
-        android:textSize="25sp" />
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/anjo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/vagabundo"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:layout_margin="10dp"
+        android:gravity="center"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:textColor="#FFFFFF"
+        android:textSize="30sp"
+        android:textStyle="bold" />
     
 </LinearLayout>
