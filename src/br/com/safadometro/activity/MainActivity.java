@@ -11,7 +11,6 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class MainActivity extends Activity {
 
@@ -41,10 +40,8 @@ public class MainActivity extends Activity {
 		btnCalcular.setOnClickListener(new OnClickListener() {		
 			@Override
 			public void onClick(View v) {
-				if(verificaPreenchido(campoDia) && verificaPreenchido(campoMes) && verificaPreenchido(campoAno)){
+				if(Validator.validateNotNull(campoDia, "Preencha!") && Validator.validateNotNull(campoMes, "Preencha!") && Validator.validateNotNull(campoAno, "Preencha!")){
 					calcularPorcentagem(converterInt(campoDia), converterInt(campoMes), converterInt(campoAno));					
-				}else{
-					Toast.makeText(getApplicationContext(), "Preencha todos os Campos!", Toast.LENGTH_SHORT).show();
 				}
 			}
 		});
@@ -65,12 +62,20 @@ public class MainActivity extends Activity {
 		anoF = (float) ano;
 		anjo = 100f;
 		
-		safadeza = (float) (mesF + (anoF / 100F) * (50F - diaF));
-		anjo = anjo - safadeza;
-				
-		this.anjo.setText(df.format(anjo) +" % Anjo");
-		this.vagabundo.setText(df.format(safadeza) +" % Vagabundo");
-		
+		if(dia == 6 &&  mes == 9 && ano == 88){
+			this.anjo.setText(99 +" % Anjo");
+			this.vagabundo.setText(1 +" % Vagabundo");
+		}else{
+			safadeza = calcularSafadeza(diaF, mesF, anoF);	
+			anjo = anjo - safadeza;			
+			this.anjo.setText(df.format(anjo) +" % Anjo");
+			this.vagabundo.setText(df.format(safadeza) +" % Vagabundo");
+		}
+	}
+
+	private float calcularSafadeza(float dia, float mes, float ano) {		
+		float safadeza = (float) (mes + (ano / 100F) * (50F - dia));
+		return safadeza;
 	}
 	
 	/**
@@ -95,16 +100,6 @@ public class MainActivity extends Activity {
 		retorno = Integer.parseInt(campo.getText().toString());
 		return retorno;
 		
-	}
-		
-	private boolean verificaPreenchido(EditText campo){
-		String valor = campo.getText().toString();
-		
-		if (valor == "" || valor == null){
-			return false;			
-		}else{
-			return true;
-		}
 	}
 	
 }
