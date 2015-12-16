@@ -1,8 +1,9 @@
 package br.com.safadometro.activity;
 
+import java.text.DecimalFormat;
+
 import android.app.Activity;
 import android.os.Bundle;
-import android.text.Editable;
 import android.text.InputFilter;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -57,19 +58,18 @@ public class MainActivity extends Activity {
 	 * @param ano
 	 */
 	private void calcularPorcentagem(int dia, int mes, int ano){
-		Double safadeza, anjo, anoD, diaD, mesD = 0.0;
-		diaD = (double) dia;
-		mesD = (double) this.somatorio(mes);
-		anoD = (double) ano;
-		anjo = 100d;
+		DecimalFormat df = new DecimalFormat("0.00");
+		float safadeza, anjo, anoF, diaF, mesF = 0f;
+		diaF = (float) dia;
+		mesF = (float) this.somatorio(mes);
+		anoF = (float) ano;
+		anjo = 100f;
 		
-		
-		safadeza = mesD + (anoD / 100d) * (50d - diaD);
+		safadeza = (float) (mesF + (anoF / 100F) * (50F - diaF));
 		anjo = anjo - safadeza;
-		
-		
-		this.anjo.setText(Math.round(anjo) +" % Anjo");
-		this.vagabundo.setText(safadeza +" % Vagabundo");
+				
+		this.anjo.setText(df.format(anjo) +" % Anjo");
+		this.vagabundo.setText(df.format(safadeza) +" % Vagabundo");
 		
 	}
 	
