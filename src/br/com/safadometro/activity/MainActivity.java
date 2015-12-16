@@ -26,16 +26,13 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.main_activity);
 		
 		campoDia = (EditText) findViewById(R.id.campoDia);
-		InputFilterMinMax filtroDia = new InputFilterMinMax(1, 31);
-		campoDia.setFilters(new InputFilter[]{});
+		campoDia.setFilters(new InputFilter[]{new InputFilterMinMax(01, 31)});
 		
 		campoMes = (EditText) findViewById(R.id.campoMes);
-		InputFilterMinMax filtroMes = new InputFilterMinMax(1, 12);
-		campoDia.setFilters(new InputFilter[]{filtroMes});
+		campoMes.setFilters(new InputFilter[]{new InputFilterMinMax(01, 12)});
 		
 		campoAno = (EditText) findViewById(R.id.campoAno);
-		InputFilterMinMax filtroAno = new InputFilterMinMax(1, 99);
-		campoDia.setFilters(new InputFilter[]{filtroAno});
+		campoAno.setFilters(new InputFilter[]{new InputFilterMinMax(00, 99)});
 		
 		vagabundo = (TextView) findViewById(R.id.vagabundo);
 		anjo = (TextView) findViewById(R.id.anjo);
@@ -60,14 +57,18 @@ public class MainActivity extends Activity {
 	 * @param ano
 	 */
 	private void calcularPorcentagem(int dia, int mes, int ano){
-		Double safadeza, anjo, anoD = 0.0;
+		Double safadeza, anjo, anoD, diaD, mesD = 0.0;
+		diaD = (double) dia;
+		mesD = (double) this.somatorio(mes);
 		anoD = (double) ano;
 		anjo = 100d;
 		
-		safadeza = this.somatorio(mes) + (anoD / 100) * (50 - dia);
-		anjo -= safadeza;
 		
-		this.anjo.setText(anjo +" % Anjo");
+		safadeza = mesD + (anoD / 100d) * (50d - diaD);
+		anjo = anjo - safadeza;
+		
+		
+		this.anjo.setText(Math.round(anjo) +" % Anjo");
 		this.vagabundo.setText(safadeza +" % Vagabundo");
 		
 	}
